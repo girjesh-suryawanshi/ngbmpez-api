@@ -1,7 +1,10 @@
 package com.mpez.ngbmpez.services;
 
+import com.mpez.ngbmpez.controller.UserDetailController;
 import com.mpez.ngbmpez.dao.UserDetailDAO;
 import com.mpez.ngbmpez.interfaces.UserDetailInterface;
+import com.mpez.ngbmpez.utility.GlobalResource;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +13,14 @@ import java.util.List;
 @Service
 public class UserDetailService {
 
+    private Logger logger = GlobalResource.getLogger(UserDetailService.class);
+
     @Autowired
     UserDetailDAO userDetailDAO;
 
     public List<? extends UserDetailInterface> getAllUser() {
+        String methodName = "getAllUser()";
+        logger.info(methodName, "called");
         List<? extends UserDetailInterface> userDetailInterfaces = null;
         userDetailInterfaces = userDetailDAO.getAllUser();
         return userDetailInterfaces;
