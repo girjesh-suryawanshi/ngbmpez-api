@@ -29,4 +29,23 @@ public class UserDetailDAO {
     }
 
 
+    public UserDetailInterface postUserDetail(UserDetailInterface userDetailInterface) {
+        String methodName = "postUserDetail()";
+        logger.info(methodName, "called");
+        UserDetailInterface userDetailInterface1 = null;
+        userDetailInterface1 =userDetailRepository.save(userDetailInterface);
+        return userDetailInterface1;
+    }
+
+    public UserDetailInterface getUserByUserId(String userId) {
+        String methodName = "getUserByUserId()";
+        logger.info(methodName, "called");
+
+        UserDetailInterface userDetailInterface = null;
+
+        userDetailInterface = userDetailRepository.findByUserId(userId);
+
+        return userDetailInterface;
+
+    }
 }
